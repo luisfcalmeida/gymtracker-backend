@@ -1,0 +1,52 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table users {
+  id bigint [pk, increment]
+  email varchar(255) [not null, unique]
+  password varchar(255) [not null]
+  name varchar(255) [not null]
+  created_at timestamp [not null, default: `now()`]
+}
+
+Table workout_plans {
+  id bigint [pk, increment]
+  user_id bigint [not null]
+  name varchar(255) [not null]
+  created_at timestamp [not null, default: `now()`]
+}
+
+Table exercises {
+  id bigint [pk, increment]
+  name varchar(255) [not null]
+  muscle_group varchar(100)
+  equipment varchar(100)
+}
+
+Table workout_exercises {
+  id bigint [pk, increment]
+  workout_plan_id bigint [not null]
+  exercise_id bigint [not null]
+  order_index int [not null]
+}
+
+Table workout_sets {
+  id bigint [pk, increment]
+  workout_exercise_id bigint [not null]
+  set_number int [not null]
+  repetitions int [not null]
+  weight decimal(6,2)
+  rest_seconds int
+}
+
+/* ===========================
+   Relationships
+=========================== */
+
+Ref: workout_plans.user_id > users.id
+
+Ref: workout_exercises.workout_plan_id > workout_plans.id
+
+Ref: workout_exercises.exercise_id > exercises.id
+
+Ref: workout_sets.workout_exercise_id > workout_exercises.id
