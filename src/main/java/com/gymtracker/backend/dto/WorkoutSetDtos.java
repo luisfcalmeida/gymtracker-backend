@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
 
+import java.math.BigDecimal;
+
 public class WorkoutSetDtos {
 
     public record WorkoutSetResponse(
@@ -12,7 +14,7 @@ public class WorkoutSetDtos {
             Long workoutExerciseId,
             Integer setNumber,
             Integer repetitions,
-            Double weight,
+            BigDecimal weight,
             Integer restSeconds
     ) {
     }
@@ -30,7 +32,7 @@ public class WorkoutSetDtos {
             Integer repetitions,
 
             @PositiveOrZero
-            Double weight,
+            BigDecimal weight,
 
             @PositiveOrZero
             Integer restSeconds
@@ -47,7 +49,7 @@ public class WorkoutSetDtos {
             Integer repetitions,
 
             @PositiveOrZero
-            Double weight,
+            BigDecimal weight,
 
             @PositiveOrZero
             Integer restSeconds

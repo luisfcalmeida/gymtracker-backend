@@ -2,6 +2,8 @@ package com.gymtracker.backend.entity;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "workout_sets")
 public class WorkoutSet {
@@ -20,8 +22,8 @@ public class WorkoutSet {
     @Column(name = "repetitions", nullable = false)
     private Integer repetitions;
 
-    @Column(name = "weight")
-    private Double weight;
+    @Column(name = "weight", precision = 6, scale = 2)
+    private BigDecimal weight;
 
     @Column(name = "rest_seconds")
     private Integer restSeconds;
@@ -58,11 +60,11 @@ public class WorkoutSet {
         this.repetitions = repetitions;
     }
 
-    public Double getWeight() {
+    public BigDecimal getWeight() {
         return weight;
     }
 
-    public void setWeight(Double weight) {
+    public void setWeight(BigDecimal weight) {
         this.weight = weight;
     }
 
