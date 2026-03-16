@@ -5,6 +5,7 @@ import com.gymtracker.backend.repository.WorkoutExerciseRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class WorkoutExerciseService {
@@ -13,6 +14,10 @@ public class WorkoutExerciseService {
 
     public WorkoutExerciseService(WorkoutExerciseRepository workoutExerciseRepository) {
         this.workoutExerciseRepository = workoutExerciseRepository;
+    }
+
+    public Optional<WorkoutExercise> findById(Long id) {
+        return workoutExerciseRepository.findById(id);
     }
 
     public List<WorkoutExercise> findByWorkoutPlan(Long planId) {

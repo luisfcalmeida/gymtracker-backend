@@ -25,6 +25,10 @@ public class WorkoutExercise {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public WorkoutPlan getWorkoutPlan() {
         return workoutPlan;
     }
